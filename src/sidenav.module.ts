@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { SideNavComponent } from './sidenav/sidenav.component';
 import { SideNavListItemComponent } from './sidenav/sidenav-list-item/sidenav-list-item.component';
 import { MaterialModule } from './material.module';
+import { FormDirective } from './shared/form.directive';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { MaterialModule } from './material.module';
     ],
     declarations: [
         SideNavComponent,
-        SideNavListItemComponent
+        SideNavListItemComponent,
+        FormDirective
         // RolesComponent,
         // ListComponent,
         // AddEditViewComponent,

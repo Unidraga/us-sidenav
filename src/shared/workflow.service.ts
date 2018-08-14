@@ -4,8 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 // Import envirnoment variable
-import { environment } from '../../environments/environment';
-import { Workflow } from '../workflow';
+import { environment } from '../environments/environment';
+// import { Workflow } from '../workflow';
 
 // Classes
 // import { Email } from '../data/system/email';
@@ -21,8 +21,7 @@ export class WorkflowService {
   private URL_SAVE_DIAGRAM = environment.API_URL + this.baseRoute + '/save';
   private URL_LOAD_DIAGRAM = environment.API_URL + this.baseRoute + '/load';
 
-  constructor(
-    private http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   getDiagrams() {
@@ -38,8 +37,8 @@ export class WorkflowService {
   //   return this.http.post(this.URL_LOAD_DIAGRAM, body, { headers: headers });
   // }
 
-  saveDiagram(workflow: Workflow) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.URL_SAVE_DIAGRAM, workflow, { headers: headers });
-  }
+  // saveDiagram(workflow: Workflow) {
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   return this.http.post(this.URL_SAVE_DIAGRAM, workflow, { headers: headers });
+  // }
 }

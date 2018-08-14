@@ -1,6 +1,6 @@
 import { Injectable, Type } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { NavItem } from '../sidenav/nav-item';
 
 @Injectable()
