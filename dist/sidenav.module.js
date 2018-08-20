@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SideNavComponent } from './sidenav/sidenav.component';
@@ -14,6 +14,7 @@ var SideNavModule = /** @class */ (function () {
                     imports: [
                         CommonModule,
                         FormsModule,
+                        ReactiveFormsModule,
                         MaterialModule,
                         BrowserAnimationsModule
                         // RouterModule.forChild(rolesRoutes)

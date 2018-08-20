@@ -398,6 +398,7 @@
                         imports: [
                             common.CommonModule,
                             forms.FormsModule,
+                            forms.ReactiveFormsModule,
                             MaterialModule,
                             animations$1.BrowserAnimationsModule
                             // RouterModule.forChild(rolesRoutes)
