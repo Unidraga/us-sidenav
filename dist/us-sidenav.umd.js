@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Subject'), require('@angular/common/http'), require('@angular/forms'), require('@angular/router'), require('@angular/animations'), require('@angular/material'), require('@angular/common'), require('@angular/platform-browser/animations')) :
-    typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Subject', '@angular/common/http', '@angular/forms', '@angular/router', '@angular/animations', '@angular/material', '@angular/common', '@angular/platform-browser/animations'], factory) :
-    (factory((global.usSidenav = {}),global.ng.core,global.Rx.Subject,global.http,global.ng.forms,global.ng.router,global.animations,global.ng.material,global.ng.common,global.animations$1));
-}(this, (function (exports,core,Subject,http,forms,router,animations,material,common,animations$1) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Subject'), require('@angular/common/http'), require('@angular/forms'), require('@angular/animations'), require('@angular/material'), require('@angular/common'), require('@angular/platform-browser/animations')) :
+    typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Subject', '@angular/common/http', '@angular/forms', '@angular/animations', '@angular/material', '@angular/common', '@angular/platform-browser/animations'], factory) :
+    (factory((global.usSidenav = {}),global.ng.core,global.Rx.Subject,global.http,global.ng.forms,global.animations,global.ng.material,global.ng.common,global.animations$1));
+}(this, (function (exports,core,Subject,http,forms,animations,material,common,animations$1) { 'use strict';
 
     var NavItem = /** @class */ (function () {
         function NavItem(name) {
@@ -327,9 +327,8 @@
 
     var SideNavListItemComponent = /** @class */ (function () {
         // subscription: Subscription;
-        function SideNavListItemComponent(componentRouteService, router$$1) {
+        function SideNavListItemComponent(componentRouteService) {
             this.componentRouteService = componentRouteService;
-            this.router = router$$1;
             this.ariaExpanded = this.expanded;
         }
         SideNavListItemComponent.prototype.ngOnInit = function () {
@@ -367,8 +366,7 @@
         ];
         /** @nocollapse */
         SideNavListItemComponent.ctorParameters = function () { return [
-            { type: ComponentRouteService },
-            { type: router.Router }
+            { type: ComponentRouteService }
         ]; };
         SideNavListItemComponent.propDecorators = {
             ariaExpanded: [{ type: core.HostBinding, args: ['attr.aria-expanded',] }],

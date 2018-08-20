@@ -1,6 +1,5 @@
 import {Component, HostBinding, Input, OnInit, EventEmitter, Output, Type, OnDestroy} from '@angular/core';
 import {NavItem} from '../nav-item';
-import {Router} from '@angular/router';
 // import {NavService} from '../nav.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { ComponentRouteService } from '../../shared/route.service';
@@ -27,8 +26,7 @@ export class SideNavListItemComponent implements OnInit {
   // subscription: Subscription;
 
   constructor(
-    private componentRouteService: ComponentRouteService,
-              public router: Router) {
+    private componentRouteService: ComponentRouteService) {
   }
 
   ngOnInit() {

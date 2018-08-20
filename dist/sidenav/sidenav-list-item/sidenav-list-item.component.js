@@ -1,14 +1,12 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { NavItem } from '../nav-item';
-import { Router } from '@angular/router';
 // import {NavService} from '../nav.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ComponentRouteService } from '../../shared/route.service';
 var SideNavListItemComponent = /** @class */ (function () {
     // subscription: Subscription;
-    function SideNavListItemComponent(componentRouteService, router) {
+    function SideNavListItemComponent(componentRouteService) {
         this.componentRouteService = componentRouteService;
-        this.router = router;
         this.ariaExpanded = this.expanded;
     }
     SideNavListItemComponent.prototype.ngOnInit = function () {
@@ -46,8 +44,7 @@ var SideNavListItemComponent = /** @class */ (function () {
     ];
     /** @nocollapse */
     SideNavListItemComponent.ctorParameters = function () { return [
-        { type: ComponentRouteService },
-        { type: Router }
+        { type: ComponentRouteService }
     ]; };
     SideNavListItemComponent.propDecorators = {
         ariaExpanded: [{ type: HostBinding, args: ['attr.aria-expanded',] }],
