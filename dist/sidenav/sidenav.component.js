@@ -4,15 +4,20 @@ import { NavItem } from './nav-item';
 import { FormDirective } from '../shared/form.directive';
 import { ComponentRouteService } from '../shared/route.service';
 import { WorkflowService } from '../shared/workflow.service';
+import { SideNavConfig } from './sidenav-config';
 var SideNavComponent = /** @class */ (function () {
-    function SideNavComponent(_formBuilder, changeDetectorRef, componentFactoryResolver, workflowService, componentRouteService) {
+    function SideNavComponent(_formBuilder, changeDetectorRef, componentFactoryResolver, config, workflowService, componentRouteService) {
         this._formBuilder = _formBuilder;
         this.changeDetectorRef = changeDetectorRef;
         this.componentFactoryResolver = componentFactoryResolver;
+        this.config = config;
         this.workflowService = workflowService;
         this.componentRouteService = componentRouteService;
         this.mappings = new Map();
         this.navItems = [];
+        if (config) {
+            this.projectName = config.projectName;
+        }
     }
     SideNavComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -38,7 +43,8 @@ var SideNavComponent = /** @class */ (function () {
             // const diagramConnectors = diagramContents['connectors'];
             // const diagramNodes = diagramContents['nodes'];
             // Angular BPMN
-            var selectedData = _this.workflow = extractedData[3];
+            var selectedData = _this.workflow = extractedData.find(function (diagram) { return diagram.name === _this.projectName; });
+            // const selectedData = this.workflow = extractedData[3];
             var definition = selectedData['bpmn:definitions'];
             var diagramType = selectedData['diagramType'];
             var process = definition['bpmn:process'];
@@ -213,6 +219,7 @@ var SideNavComponent = /** @class */ (function () {
         { type: FormBuilder },
         { type: ChangeDetectorRef },
         { type: ComponentFactoryResolver },
+        { type: SideNavConfig },
         { type: WorkflowService },
         { type: ComponentRouteService }
     ]; };

@@ -5,7 +5,8 @@ import { FormDirective } from '../shared/form.directive';
 import { FormComponent } from '../shared/form.component';
 import { ComponentRouteService } from '../shared/route.service';
 import { WorkflowService } from '../shared/workflow.service';
-
+import { SideNavConfig } from './sidenav-config';
+import { SideNavModule } from '../sidenav.module';
 @Component({
   selector: 'us-sidenav',
   templateUrl: './sidenav.component.html',
@@ -13,6 +14,8 @@ import { WorkflowService } from '../shared/workflow.service';
   providers: [ComponentRouteService, WorkflowService]
 })
 export class SideNavComponent implements OnInit, OnDestroy {
+  private projectName: string;
+
   // @Input() forms: FormItem[];
   @ViewChild(FormDirective) formHost: FormDirective;
 
@@ -32,8 +35,11 @@ export class SideNavComponent implements OnInit, OnDestroy {
   navItems: NavItem[] = [];
 
   constructor(private _formBuilder: FormBuilder, private changeDetectorRef: ChangeDetectorRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
+    private componentFactoryResolver: ComponentFactoryResolver, private config: SideNavConfig,
     private workflowService: WorkflowService, private componentRouteService: ComponentRouteService) {
+    if (config) {
+      this.projectName = config.projectName;
+    }
   }
 
   ngOnInit() {
@@ -53,7 +59,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
         // const acq = this.acquisition = data[0];
         // this.navItems = this.extractSteps(acq['steps']);
         // console.log(this.navItems);
-        const extractedData: { [index: number]: any } = data;
+        const extractedData = data;
 
         console.log(data);
         // SyncFusion
@@ -66,7 +72,9 @@ export class SideNavComponent implements OnInit, OnDestroy {
         // const diagramNodes = diagramContents['nodes'];
 
         // Angular BPMN
-        const selectedData = this.workflow = extractedData[3];
+        const selectedData = this.workflow = extractedData.find(
+          (diagram: any) => diagram.name === this.projectName);
+        // const selectedData = this.workflow = extractedData[3];
         const definition = selectedData['bpmn:definitions'];
         const diagramType = selectedData['diagramType'];
         const process = definition['bpmn:process'];

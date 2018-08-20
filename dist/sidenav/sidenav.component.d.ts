@@ -4,12 +4,15 @@ import { NavItem } from './nav-item';
 import { FormDirective } from '../shared/form.directive';
 import { ComponentRouteService } from '../shared/route.service';
 import { WorkflowService } from '../shared/workflow.service';
+import { SideNavConfig } from './sidenav-config';
 export declare class SideNavComponent implements OnInit, OnDestroy {
     private _formBuilder;
     private changeDetectorRef;
     private componentFactoryResolver;
+    private config;
     private workflowService;
     private componentRouteService;
+    private projectName;
     formHost: FormDirective;
     message: string;
     private mappings;
@@ -17,7 +20,7 @@ export declare class SideNavComponent implements OnInit, OnDestroy {
     selectedNav: NavItem;
     item: NavItem;
     navItems: NavItem[];
-    constructor(_formBuilder: FormBuilder, changeDetectorRef: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver, workflowService: WorkflowService, componentRouteService: ComponentRouteService);
+    constructor(_formBuilder: FormBuilder, changeDetectorRef: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver, config: SideNavConfig, workflowService: WorkflowService, componentRouteService: ComponentRouteService);
     ngOnInit(): void;
     ngOnDestroy(): void;
     private buildNavList(diagramConnectors, diagramNodes, diagramType, diagramRoot?);

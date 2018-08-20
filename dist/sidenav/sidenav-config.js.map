@@ -1,0 +1,1 @@
+{"version":3,"file":"sidenav-config.js","sourceRoot":"","sources":["../../tmp/sidenav/sidenav-config.ts"],"names":[],"mappings":"AAAA;IACI,uBAAmB,WAAmB;QAAnB,gBAAW,GAAX,WAAW,CAAQ;IACtC,CAAC;IACL,oBAAC;AAAD,CAAC,AAHD,IAGC","sourcesContent":["export class SideNavConfig {\n    constructor(public projectName: string) {\n    }\n}\n"]}

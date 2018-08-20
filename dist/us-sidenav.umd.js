@@ -106,15 +106,26 @@
         return WorkflowService;
     }());
 
+    var SideNavConfig = /** @class */ (function () {
+        function SideNavConfig(projectName) {
+            this.projectName = projectName;
+        }
+        return SideNavConfig;
+    }());
+
     var SideNavComponent = /** @class */ (function () {
-        function SideNavComponent(_formBuilder, changeDetectorRef, componentFactoryResolver, workflowService, componentRouteService) {
+        function SideNavComponent(_formBuilder, changeDetectorRef, componentFactoryResolver, config, workflowService, componentRouteService) {
             this._formBuilder = _formBuilder;
             this.changeDetectorRef = changeDetectorRef;
             this.componentFactoryResolver = componentFactoryResolver;
+            this.config = config;
             this.workflowService = workflowService;
             this.componentRouteService = componentRouteService;
             this.mappings = new Map();
             this.navItems = [];
+            if (config) {
+                this.projectName = config.projectName;
+            }
         }
         SideNavComponent.prototype.ngOnInit = function () {
             var _this = this;
@@ -140,7 +151,8 @@
                 // const diagramConnectors = diagramContents['connectors'];
                 // const diagramNodes = diagramContents['nodes'];
                 // Angular BPMN
-                var selectedData = _this.workflow = extractedData[3];
+                var selectedData = _this.workflow = extractedData.find(function (diagram) { return diagram.name === _this.projectName; });
+                // const selectedData = this.workflow = extractedData[3];
                 var definition = selectedData['bpmn:definitions'];
                 var diagramType = selectedData['diagramType'];
                 var process = definition['bpmn:process'];
@@ -315,6 +327,7 @@
             { type: forms.FormBuilder },
             { type: core.ChangeDetectorRef },
             { type: core.ComponentFactoryResolver },
+            { type: SideNavConfig },
             { type: WorkflowService },
             { type: ComponentRouteService }
         ]; };
@@ -391,6 +404,12 @@
     var SideNavModule = /** @class */ (function () {
         function SideNavModule() {
         }
+        SideNavModule.forRoot = function (config) {
+            return {
+                ngModule: SideNavConfig,
+                providers: [{ provide: SideNavConfig, useValue: config }]
+            };
+        };
         SideNavModule.decorators = [
             { type: core.NgModule, args: [{
                         imports: [
