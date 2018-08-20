@@ -14,8 +14,6 @@ import { SideNavModule } from '../sidenav.module';
   providers: [ComponentRouteService, WorkflowService]
 })
 export class SideNavComponent implements OnInit, OnDestroy {
-  private projectName: string;
-
   // @Input() forms: FormItem[];
   @ViewChild(FormDirective) formHost: FormDirective;
 
@@ -37,9 +35,6 @@ export class SideNavComponent implements OnInit, OnDestroy {
   constructor(private _formBuilder: FormBuilder, private changeDetectorRef: ChangeDetectorRef,
     private componentFactoryResolver: ComponentFactoryResolver, private config: SideNavConfig,
     private workflowService: WorkflowService, private componentRouteService: ComponentRouteService) {
-    if (config) {
-      this.projectName = config.projectName;
-    }
   }
 
   ngOnInit() {
@@ -73,7 +68,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
 
         // Angular BPMN
         const selectedData = this.workflow = extractedData.find(
-          (diagram: any) => diagram.name === this.projectName);
+          (diagram: any) => diagram.name === this.config.projectName);
         // const selectedData = this.workflow = extractedData[3];
         const definition = selectedData['bpmn:definitions'];
         const diagramType = selectedData['diagramType'];
