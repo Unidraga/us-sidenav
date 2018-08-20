@@ -12,7 +12,7 @@ var SideNavModule = /** @class */ (function () {
     }
     SideNavModule.forRoot = function (config) {
         return {
-            ngModule: SideNavConfig,
+            ngModule: SideNavModule,
             providers: [{ provide: SideNavConfig, useValue: config }]
         };
     };

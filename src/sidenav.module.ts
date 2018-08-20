@@ -38,7 +38,7 @@ import { SideNavConfig } from './sidenav/sidenav-config';
 export class SideNavModule {
   static forRoot(config: SideNavConfig): ModuleWithProviders<SideNavModule> {
     return {
-      ngModule: SideNavConfig,
+      ngModule: SideNavModule,
       providers: [{provide: SideNavConfig, useValue: config}]
     };
   }
