@@ -33,8 +33,8 @@ var SideNavListItemComponent = /** @class */ (function () {
     SideNavListItemComponent.decorators = [
         { type: Component, args: [{
                     selector: 'us-sidenav-list-item',
-                    templateUrl: './sidenav-list-item.component.html',
-                    styleUrls: ['./sidenav-list-item.component.less'],
+                    template: "\n    <a mat-list-item [ngStyle]=\"{'padding-left': (depth * 1.5) + 'em'}\" (click)=\"onItemSelected(item)\"\n                  [ngClass]=\"{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}\">\n      <mat-icon class=\"routeIcon\"><small>{{item.iconName}}</small></mat-icon>\n      {{item.displayName}}\n      <span fxFlex *ngIf=\"item.children && item.children.length\">\n        <span fxFlex></span>\n        <mat-icon [@indicatorRotate]=\"expanded ? 'expanded': 'collapsed'\">\n          expand_more\n        </mat-icon>\n      </span>\n    </a>\n    <div *ngIf=\"expanded\">\n      <us-sidenav-list-item *ngFor=\"let child of item.children\" [item]=\"child\" [depth]=\"depth+1\">\n      </us-sidenav-list-item>\n    </div>\n  ",
+                    styles: ["\n    :host {\n      display: block;\n      outline: none;\n    }\n    .mat-list-item {\n      padding: 8px 0;\n    }\n    .mat-list-item .routeIcon {\n      margin-right: 40px;\n    }\n  "],
                     animations: [
                         trigger('indicatorRotate', [
                             state('collapsed', style({ transform: 'rotate(0deg)' })),

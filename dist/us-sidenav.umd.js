@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Subject'), require('@angular/common/http'), require('@angular/forms'), require('@angular/router'), require('@angular/animations'), require('@angular/material'), require('@angular/common'), require('@angular/platform-browser/animations')) :
     typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Subject', '@angular/common/http', '@angular/forms', '@angular/router', '@angular/animations', '@angular/material', '@angular/common', '@angular/platform-browser/animations'], factory) :
-    (factory((global.usSidenav = {}),global.ng.core,global.Rx.Subject,global.http,global.ng.forms,global.ng.router,global.animations,global.material,global.ng.common,global.animations$1));
+    (factory((global.usSidenav = {}),global.ng.core,global.Rx.Subject,global.http,global.ng.forms,global.ng.router,global.animations,global.ng.material,global.ng.common,global.animations$1));
 }(this, (function (exports,core,Subject,http,forms,router,animations,material,common,animations$1) { 'use strict';
 
     var NavItem = /** @class */ (function () {
@@ -305,8 +305,8 @@
         SideNavComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'us-sidenav',
-                        templateUrl: './sidenav.component.html',
-                        styleUrls: ['./sidenav.component.less'],
+                        template: "\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-lg-12 col-md-12 col-sm-0\">\n          <mat-sidenav-container class=\"example-sidenav-container\">\n            <mat-sidenav #snav role=\"navigation\" opened mode=\"side\" class=\"col-lg-3 col-md-3 col-sm-3\">\n              <mat-nav-list>\n                <us-sidenav-list-item *ngFor=\"let item of navItems\" [item]=\"item\"></us-sidenav-list-item>\n              </mat-nav-list>\n            </mat-sidenav>\n\n            <mat-sidenav-content role=\"main\" class=\"col-lg-9 col-md-9 col-sm-9\">\n              <ng-template form-host></ng-template>\n            </mat-sidenav-content>\n          </mat-sidenav-container>\n        </div>\n      </div>\n    </div>\n  ",
+                        styles: ["\n    .example-sidenav-container {\n      height: 1200px;\n    }\n  "],
                         providers: [ComponentRouteService]
                     },] },
         ];
@@ -354,8 +354,8 @@
         SideNavListItemComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'us-sidenav-list-item',
-                        templateUrl: './sidenav-list-item.component.html',
-                        styleUrls: ['./sidenav-list-item.component.less'],
+                        template: "\n    <a mat-list-item [ngStyle]=\"{'padding-left': (depth * 1.5) + 'em'}\" (click)=\"onItemSelected(item)\"\n                  [ngClass]=\"{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}\">\n      <mat-icon class=\"routeIcon\"><small>{{item.iconName}}</small></mat-icon>\n      {{item.displayName}}\n      <span fxFlex *ngIf=\"item.children && item.children.length\">\n        <span fxFlex></span>\n        <mat-icon [@indicatorRotate]=\"expanded ? 'expanded': 'collapsed'\">\n          expand_more\n        </mat-icon>\n      </span>\n    </a>\n    <div *ngIf=\"expanded\">\n      <us-sidenav-list-item *ngFor=\"let child of item.children\" [item]=\"child\" [depth]=\"depth+1\">\n      </us-sidenav-list-item>\n    </div>\n  ",
+                        styles: ["\n    :host {\n      display: block;\n      outline: none;\n    }\n    .mat-list-item {\n      padding: 8px 0;\n    }\n    .mat-list-item .routeIcon {\n      margin-right: 40px;\n    }\n  "],
                         animations: [
                             animations.trigger('indicatorRotate', [
                                 animations.state('collapsed', animations.style({ transform: 'rotate(0deg)' })),
