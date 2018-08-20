@@ -10,7 +10,7 @@ import { WorkflowService } from '../shared/workflow.service';
   selector: 'us-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.less'],
-  providers: [ComponentRouteService]
+  providers: [ComponentRouteService, WorkflowService]
 })
 export class SideNavComponent implements OnInit, OnDestroy {
   // @Input() forms: FormItem[];
