@@ -27,6 +27,9 @@ var SideNavModule = /** @class */ (function () {
                         // ListComponent,
                         // AddEditViewComponent,
                         // DeleteComponent
+                    ],
+                    exports: [
+                        SideNavComponent
                     ]
                 },] },
     ];

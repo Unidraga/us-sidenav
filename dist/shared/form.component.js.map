@@ -1,1 +1,1 @@
-{"version":3,"file":"form.component.js","sourceRoot":"","sources":["../../tmp/shared/form.component.ts"],"names":[],"mappings":""}
+{"version":3,"file":"form.component.js","sourceRoot":"","sources":["../../tmp/shared/form.component.ts"],"names":[],"mappings":"","sourcesContent":["import { NavItem } from '../sidenav/nav-item';\n\nexport interface FormComponent {\n    data: any;\n    navItem: NavItem;\n    model: any;\n}\n"]}

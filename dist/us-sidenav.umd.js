@@ -411,6 +411,9 @@
                             // ListComponent,
                             // AddEditViewComponent,
                             // DeleteComponent
+                        ],
+                        exports: [
+                            SideNavComponent
                         ]
                     },] },
         ];

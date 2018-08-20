@@ -28,6 +28,9 @@ import { FormDirective } from './shared/form.directive';
         // ListComponent,
         // AddEditViewComponent,
         // DeleteComponent
+    ],
+    exports: [
+        SideNavComponent
     ]
 })
 export class SideNavModule { }

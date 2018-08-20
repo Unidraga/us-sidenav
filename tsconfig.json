@@ -4,6 +4,7 @@
     "baseUrl": "./",
     "outDir": "./dist",
     "sourceMap": true,
+    "inlineSources": true,
     "declaration": true,
     "stripInternal": true,
     "moduleResolution": "node",
@@ -16,6 +17,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "skipLibCheck": true,
     "lib": [
       "es2017",
       "dom"
