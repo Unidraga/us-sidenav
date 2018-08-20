@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, ValueProvider } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,7 +8,6 @@ import { SideNavListItemComponent } from './sidenav/sidenav-list-item/sidenav-li
 import { MaterialModule } from './material.module';
 import { FormDirective } from './shared/form.directive';
 import { SideNavConfig } from './sidenav/sidenav-config';
-
 
 @NgModule({
   imports: [
@@ -37,7 +36,7 @@ import { SideNavConfig } from './sidenav/sidenav-config';
   ]
 })
 export class SideNavModule {
-  static forRoot(config: SideNavConfig) {
+  static forRoot(config: SideNavConfig): ModuleWithProviders<SideNavModule> {
     return {
       ngModule: SideNavConfig,
       providers: [{provide: SideNavConfig, useValue: config}]
