@@ -1,6 +1,9 @@
 {
   "name": "us-sidenav",
   "version": "0.0.0",
+  "main": "./dist/us-sidenav.umd.js",
+  "module": "./dist/us-sidenav.js",
+  "typings": "./dist/us-sidenav.d",
   "scripts": {
     "start": "ng serve",
     "lint": "ng lint",
