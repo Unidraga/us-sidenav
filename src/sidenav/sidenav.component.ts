@@ -48,7 +48,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
       });
 
     this.workflowService.getDiagrams().subscribe(
-      (data: any) => {
+      data => {
         // console.log(data);
         // const acq = this.acquisition = data[0];
         // this.navItems = this.extractSteps(acq['steps']);
