@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -12,6 +12,7 @@ import { FormDirective } from './shared/form.directive';
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         MaterialModule,
         BrowserAnimationsModule
         // RouterModule.forChild(rolesRoutes)
