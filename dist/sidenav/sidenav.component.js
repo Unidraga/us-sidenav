@@ -13,6 +13,7 @@ var SideNavComponent = /** @class */ (function () {
         this.config = config;
         this.workflowService = workflowService;
         this.componentRouteService = componentRouteService;
+        this._projectName = this.projectName;
         this.mappings = new Map();
         this.navItems = [];
     }
@@ -40,7 +41,7 @@ var SideNavComponent = /** @class */ (function () {
             // const diagramConnectors = diagramContents['connectors'];
             // const diagramNodes = diagramContents['nodes'];
             // Angular BPMN
-            var selectedData = _this.workflow = extractedData.find(function (diagram) { return diagram.name === _this.projectName; });
+            var selectedData = _this.workflow = extractedData.find(function (diagram) { return diagram.name === _this._projectName; });
             // const selectedData = this.workflow = extractedData[3];
             var definition = selectedData['bpmn:definitions'];
             var diagramType = selectedData['diagramType'];

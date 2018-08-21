@@ -14,6 +14,7 @@ export declare class SideNavComponent implements OnInit, OnDestroy {
     private componentRouteService;
     formHost: FormDirective;
     projectName: string;
+    private _projectName;
     message: string;
     private mappings;
     workflow: any;
