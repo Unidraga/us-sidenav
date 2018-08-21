@@ -121,7 +121,7 @@
             this.config = config;
             this.workflowService = workflowService;
             this.componentRouteService = componentRouteService;
-            this.projectName = '';
+            this.name = '';
             this.mappings = new Map();
             this.navItems = [];
         }
@@ -149,7 +149,7 @@
                 // const diagramConnectors = diagramContents['connectors'];
                 // const diagramNodes = diagramContents['nodes'];
                 // Angular BPMN
-                var selectedData = _this.workflow = extractedData.find(function (diagram) { return diagram.name === _this.projectName; });
+                var selectedData = _this.workflow = extractedData.find(function (diagram) { return diagram.name === _this.name; });
                 // const selectedData = this.workflow = extractedData[3];
                 var definition = selectedData['bpmn:definitions'];
                 var diagramType = selectedData['diagramType'];
@@ -331,7 +331,7 @@
         ]; };
         SideNavComponent.propDecorators = {
             formHost: [{ type: core.ViewChild, args: [FormDirective,] }],
-            projectName: [{ type: core.Input }],
+            name: [{ type: core.Input }],
             item: [{ type: core.Input }]
         };
         return SideNavComponent;

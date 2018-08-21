@@ -16,7 +16,7 @@ import { SideNavModule } from '../sidenav.module';
 export class SideNavComponent implements OnInit, OnDestroy {
   // @Input() forms: FormItem[];
   @ViewChild(FormDirective) formHost: FormDirective;
-  @Input() projectName: string = '';
+  @Input() name: string = '';
 
   message: string;
   private mappings = new Map<string, any>();
@@ -69,7 +69,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
 
         // Angular BPMN
         const selectedData = this.workflow = extractedData.find(
-          (diagram: any) => diagram.name === this.projectName);
+          (diagram: any) => diagram.name === this.name);
         // const selectedData = this.workflow = extractedData[3];
         const definition = selectedData['bpmn:definitions'];
         const diagramType = selectedData['diagramType'];
