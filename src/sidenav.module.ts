@@ -42,4 +42,11 @@ export class SideNavModule {
       providers: [{provide: SideNavConfig, useValue: config}]
     };
   }
+
+  static forChild(config: SideNavConfig): ModuleWithProviders<SideNavModule> {
+    return {
+      ngModule: SideNavModule,
+      providers: [{provide: SideNavConfig, useValue: config}]
+    };
+  }
 }

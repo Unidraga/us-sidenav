@@ -1,4 +1,5 @@
+import { Route } from '@angular/router';
 export declare class SideNavConfig {
-    projectName: string;
-    constructor(projectName: string);
+    routes: Route[];
+    constructor(routes: Route[]);
 }

@@ -16,6 +16,12 @@ var SideNavModule = /** @class */ (function () {
             providers: [{ provide: SideNavConfig, useValue: config }]
         };
     };
+    SideNavModule.forChild = function (config) {
+        return {
+            ngModule: SideNavModule,
+            providers: [{ provide: SideNavConfig, useValue: config }]
+        };
+    };
     SideNavModule.decorators = [
         { type: NgModule, args: [{
                     imports: [

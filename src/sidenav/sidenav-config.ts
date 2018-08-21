@@ -1,4 +1,7 @@
+import { Route } from '@angular/router'
+
 export class SideNavConfig {
-    constructor(public projectName: string) {
+    // private mappings: Map<string, any>();
+    constructor(public routes: Route[]) {
     }
 }

@@ -70,6 +70,10 @@ export class SideNavComponent implements OnInit, OnDestroy {
         // Angular BPMN
         const selectedData = this.workflow = extractedData.find(
           (diagram: any) => diagram.name === this.name);
+        if(!selectedData) {
+          console.error('Unable to find project name - ' + this.name);
+          return;
+        }
         // const selectedData = this.workflow = extractedData[3];
         const definition = selectedData['bpmn:definitions'];
         const diagramType = selectedData['diagramType'];

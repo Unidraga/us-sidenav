@@ -42,6 +42,10 @@ var SideNavComponent = /** @class */ (function () {
             // const diagramNodes = diagramContents['nodes'];
             // Angular BPMN
             var selectedData = _this.workflow = extractedData.find(function (diagram) { return diagram.name === _this.name; });
+            if (!selectedData) {
+                console.error('Unable to find project name - ' + _this.name);
+                return;
+            }
             // const selectedData = this.workflow = extractedData[3];
             var definition = selectedData['bpmn:definitions'];
             var diagramType = selectedData['diagramType'];

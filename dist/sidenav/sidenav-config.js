@@ -1,6 +1,7 @@
 var SideNavConfig = /** @class */ (function () {
-    function SideNavConfig(projectName) {
-        this.projectName = projectName;
+    // private mappings: Map<string, any>();
+    function SideNavConfig(routes) {
+        this.routes = routes;
     }
     return SideNavConfig;
 }());
