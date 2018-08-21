@@ -16,7 +16,7 @@ import { SideNavModule } from '../sidenav.module';
 export class SideNavComponent implements OnInit, OnDestroy {
   // @Input() forms: FormItem[];
   @ViewChild(FormDirective) formHost: FormDirective;
-  @Input() projectName: string;
+  projectName: string;
 
   message: string;
   private mappings = new Map<string, any>();

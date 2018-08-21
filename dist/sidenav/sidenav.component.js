@@ -222,7 +222,6 @@ var SideNavComponent = /** @class */ (function () {
     ]; };
     SideNavComponent.propDecorators = {
         formHost: [{ type: ViewChild, args: [FormDirective,] }],
-        projectName: [{ type: Input }],
         item: [{ type: Input }]
     };
     return SideNavComponent;

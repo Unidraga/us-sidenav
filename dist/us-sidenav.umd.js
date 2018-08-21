@@ -330,7 +330,6 @@
         ]; };
         SideNavComponent.propDecorators = {
             formHost: [{ type: core.ViewChild, args: [FormDirective,] }],
-            projectName: [{ type: core.Input }],
             item: [{ type: core.Input }]
         };
         return SideNavComponent;
@@ -402,6 +401,12 @@
     var SideNavModule = /** @class */ (function () {
         function SideNavModule() {
         }
+        SideNavModule.forRoot = function (config) {
+            return {
+                ngModule: SideNavModule,
+                providers: [{ provide: SideNavConfig, useValue: config }]
+            };
+        };
         SideNavModule.decorators = [
             { type: core.NgModule, args: [{
                         imports: [
