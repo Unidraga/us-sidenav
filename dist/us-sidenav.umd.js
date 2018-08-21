@@ -148,7 +148,7 @@
                 // const diagramConnectors = diagramContents['connectors'];
                 // const diagramNodes = diagramContents['nodes'];
                 // Angular BPMN
-                var selectedData = _this.workflow = extractedData.find(function (diagram) { return diagram.name === _this.config.projectName; });
+                var selectedData = _this.workflow = extractedData.find(function (diagram) { return diagram.name === _this.projectName; });
                 // const selectedData = this.workflow = extractedData[3];
                 var definition = selectedData['bpmn:definitions'];
                 var diagramType = selectedData['diagramType'];
@@ -330,6 +330,7 @@
         ]; };
         SideNavComponent.propDecorators = {
             formHost: [{ type: core.ViewChild, args: [FormDirective,] }],
+            projectName: [{ type: core.Input }],
             item: [{ type: core.Input }]
         };
         return SideNavComponent;
@@ -401,12 +402,6 @@
     var SideNavModule = /** @class */ (function () {
         function SideNavModule() {
         }
-        SideNavModule.forRoot = function (config) {
-            return {
-                ngModule: SideNavModule,
-                providers: [{ provide: SideNavConfig, useValue: config }]
-            };
-        };
         SideNavModule.decorators = [
             { type: core.NgModule, args: [{
                         imports: [

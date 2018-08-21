@@ -6,16 +6,9 @@ import { SideNavComponent } from './sidenav/sidenav.component';
 import { SideNavListItemComponent } from './sidenav/sidenav-list-item/sidenav-list-item.component';
 import { MaterialModule } from './material.module';
 import { FormDirective } from './shared/form.directive';
-import { SideNavConfig } from './sidenav/sidenav-config';
 var SideNavModule = /** @class */ (function () {
     function SideNavModule() {
     }
-    SideNavModule.forRoot = function (config) {
-        return {
-            ngModule: SideNavModule,
-            providers: [{ provide: SideNavConfig, useValue: config }]
-        };
-    };
     SideNavModule.decorators = [
         { type: NgModule, args: [{
                     imports: [
