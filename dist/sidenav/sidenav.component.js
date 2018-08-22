@@ -61,9 +61,28 @@ var SideNavComponent = /** @class */ (function () {
         }, function (error) {
             console.log('Error : ' + error.message);
         });
+        this.populateMappingsFromLeaves(this.navItems);
+        this.mappings.forEach(function (key, value) {
+            if (!value || value === '') {
+                console.error(key + ' is not bound to any component');
+            }
+        });
+        // this.extractComponents(this.config.routes);
     };
     SideNavComponent.prototype.ngOnDestroy = function () {
     };
+    // private extractComponents(routes: Route[]) {
+    //   if (!routes) {
+    //     return;
+    //   }
+    //   routes.forEach(route => {
+    //     this.mappings.set(route.path, route.component);
+    //     if (route.children) {
+    //       route.children.forEach(child => this.mappings.set(route.path, route.component));
+    //       this.extractComponents(route.children);
+    //     }
+    //   });
+    // }
     SideNavComponent.prototype.buildNavList = function (diagramConnectors, diagramNodes, diagramType, diagramRoot) {
         switch (diagramType) {
             case 'MindMap':
@@ -189,6 +208,18 @@ var SideNavComponent = /** @class */ (function () {
             }
         });
         return result;
+    };
+    SideNavComponent.prototype.populateMappingsFromLeaves = function (navList) {
+        var _this = this;
+        if (!navList) {
+            return;
+        }
+        navList.forEach(function (element) {
+            if (!element.children) {
+                _this.mappings.set(element.displayName, undefined);
+            }
+            _this.populateMappingsFromLeaves(element.children);
+        });
     };
     SideNavComponent.prototype.getComponentType = function (typeName) {
         var type = this.mappings[typeName];

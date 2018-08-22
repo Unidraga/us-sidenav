@@ -7,6 +7,8 @@ import { ComponentRouteService } from '../shared/route.service';
 import { WorkflowService } from '../shared/workflow.service';
 import { SideNavConfig } from './sidenav-config';
 import { SideNavModule } from '../sidenav.module';
+import { Route } from '@angular/router';
+
 @Component({
   selector: 'us-sidenav',
   templateUrl: './sidenav.component.html',
@@ -70,7 +72,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
         // Angular BPMN
         const selectedData = this.workflow = extractedData.find(
           (diagram: any) => diagram.name === this.name);
-        if(!selectedData) {
+        if (!selectedData) {
           console.error('Unable to find project name - ' + this.name);
           return;
         }
@@ -92,10 +94,33 @@ export class SideNavComponent implements OnInit, OnDestroy {
         console.log('Error : ' + error.message);
       }
     );
+
+    this.populateMappingsFromLeaves(this.navItems);
+    this.mappings.forEach((key, value) => {
+      if (!value || value === '') {
+        console.error(key + ' is not bound to any component');
+      }
+    });
+    // this.extractComponents(this.config.routes);
   }
 
   ngOnDestroy(): void {
   }
+
+  // private extractComponents(routes: Route[]) {
+  //   if (!routes) {
+  //     return;
+  //   }
+
+  //   routes.forEach(route => {
+  //     this.mappings.set(route.path, route.component);
+
+  //     if (route.children) {
+  //       route.children.forEach(child => this.mappings.set(route.path, route.component));
+  //       this.extractComponents(route.children);
+  //     }
+  //   });
+  // }
 
   private buildNavList(diagramConnectors: any, diagramNodes: any, diagramType: string, diagramRoot?: any) {
     switch (diagramType) {
@@ -235,6 +260,19 @@ export class SideNavComponent implements OnInit, OnDestroy {
       }
     });
     return result;
+  }
+
+  private populateMappingsFromLeaves(navList: NavItem[]) {
+    if (!navList) {
+      return;
+    }
+
+    navList.forEach((element: any) => {
+      if (!element.children) {
+        this.mappings.set(element.displayName, undefined);
+      }
+      this.populateMappingsFromLeaves(element.children);
+    });
   }
 
   getComponentType(typeName: string) {

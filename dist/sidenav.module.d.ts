@@ -1,6 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
-import { SideNavConfig } from './sidenav/sidenav-config';
+import { Route } from '@angular/router';
 export declare class SideNavModule {
-    static forRoot(config: SideNavConfig): ModuleWithProviders<SideNavModule>;
-    static forChild(config: SideNavConfig): ModuleWithProviders<SideNavModule>;
+    static forRoot(routes: Route[]): ModuleWithProviders<SideNavModule>;
+    static forChild(routes: Route[]): ModuleWithProviders<SideNavModule>;
 }

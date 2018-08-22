@@ -10,16 +10,16 @@ import { SideNavConfig } from './sidenav/sidenav-config';
 var SideNavModule = /** @class */ (function () {
     function SideNavModule() {
     }
-    SideNavModule.forRoot = function (config) {
+    SideNavModule.forRoot = function (routes) {
         return {
             ngModule: SideNavModule,
-            providers: [{ provide: SideNavConfig, useValue: config }]
+            providers: [{ provide: SideNavConfig, useValue: routes }]
         };
     };
-    SideNavModule.forChild = function (config) {
+    SideNavModule.forChild = function (routes) {
         return {
             ngModule: SideNavModule,
-            providers: [{ provide: SideNavConfig, useValue: config }]
+            providers: [{ provide: SideNavConfig, useValue: routes }]
         };
     };
     SideNavModule.decorators = [

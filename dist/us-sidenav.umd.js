@@ -170,9 +170,28 @@
             }, function (error) {
                 console.log('Error : ' + error.message);
             });
+            this.populateMappingsFromLeaves(this.navItems);
+            this.mappings.forEach(function (key, value) {
+                if (!value || value === '') {
+                    console.error(key + ' is not bound to any component');
+                }
+            });
+            // this.extractComponents(this.config.routes);
         };
         SideNavComponent.prototype.ngOnDestroy = function () {
         };
+        // private extractComponents(routes: Route[]) {
+        //   if (!routes) {
+        //     return;
+        //   }
+        //   routes.forEach(route => {
+        //     this.mappings.set(route.path, route.component);
+        //     if (route.children) {
+        //       route.children.forEach(child => this.mappings.set(route.path, route.component));
+        //       this.extractComponents(route.children);
+        //     }
+        //   });
+        // }
         SideNavComponent.prototype.buildNavList = function (diagramConnectors, diagramNodes, diagramType, diagramRoot) {
             switch (diagramType) {
                 case 'MindMap':
@@ -299,6 +318,18 @@
             });
             return result;
         };
+        SideNavComponent.prototype.populateMappingsFromLeaves = function (navList) {
+            var _this = this;
+            if (!navList) {
+                return;
+            }
+            navList.forEach(function (element) {
+                if (!element.children) {
+                    _this.mappings.set(element.displayName, undefined);
+                }
+                _this.populateMappingsFromLeaves(element.children);
+            });
+        };
         SideNavComponent.prototype.getComponentType = function (typeName) {
             var type = this.mappings[typeName];
             // const type = this.mappings[typeName];
@@ -408,16 +439,16 @@
     var SideNavModule = /** @class */ (function () {
         function SideNavModule() {
         }
-        SideNavModule.forRoot = function (config) {
+        SideNavModule.forRoot = function (routes) {
             return {
                 ngModule: SideNavModule,
-                providers: [{ provide: SideNavConfig, useValue: config }]
+                providers: [{ provide: SideNavConfig, useValue: routes }]
             };
         };
-        SideNavModule.forChild = function (config) {
+        SideNavModule.forChild = function (routes) {
             return {
                 ngModule: SideNavModule,
-                providers: [{ provide: SideNavConfig, useValue: config }]
+                providers: [{ provide: SideNavConfig, useValue: routes }]
             };
         };
         SideNavModule.decorators = [
