@@ -18,7 +18,23 @@ export class NavItem {
     return this._children;
   }
 
+  updateIcon(nav: NavItem|undefined, allNew: boolean, allDone: boolean) {
+    if (!nav) {
+      return;
+    }
 
+    if (nav.children && nav.children.length) {
+      // branch - set icon according to children's icon
+      allNew = nav.children.every(element => element.iconName === 'brightness_1');
+      allDone = nav.children.every(element => element.iconName === 'done');
+      nav.iconName = allNew || allDone ? nav.children[0].iconName : 'edit';
+    } else {
+      // leaf - set icon according to data fields
+      nav.iconName = allNew ? 'brightness_1' : allDone ? 'done' : 'edit';
+    }
+
+    this.updateIcon(nav.parent, allNew, allDone);
+  }
 
   constructor(name?: string) {
     this.displayName = name;
