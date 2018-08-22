@@ -167,31 +167,18 @@
                 _this.buildNavList(diagramConnectors, diagramNodes, diagramType, diagramRoot);
                 // this.navItems = this.extractSteps(acq['steps']);
                 console.log(_this.navItems);
+                _this.populateMappingsFromLeaves(_this.navItems, _this.config);
+                _this.mappings.forEach(function (value, key) {
+                    if (!value || value === '') {
+                        console.error(key + ' is not bound to any component');
+                    }
+                });
             }, function (error) {
                 console.log('Error : ' + error.message);
             });
-            this.populateMappingsFromLeaves(this.navItems, this.config);
-            this.mappings.forEach(function (value, key) {
-                if (!value || value === '') {
-                    console.error(key + ' is not bound to any component');
-                }
-            });
-            // this.extractComponents(this.config.routes);
         };
         SideNavComponent.prototype.ngOnDestroy = function () {
         };
-        // private extractComponents(routes: Route[]) {
-        //   if (!routes) {
-        //     return;
-        //   }
-        //   routes.forEach(route => {
-        //     this.mappings.set(route.path, route.component);
-        //     if (route.children) {
-        //       route.children.forEach(child => this.mappings.set(route.path, route.component));
-        //       this.extractComponents(route.children);
-        //     }
-        //   });
-        // }
         SideNavComponent.prototype.buildNavList = function (diagramConnectors, diagramNodes, diagramType, diagramRoot) {
             switch (diagramType) {
                 case 'MindMap':
@@ -326,7 +313,8 @@
             navList.forEach(function (element) {
                 if (!element.children || !element.children.length) {
                     var route = routes.find(function (route) { return route.path === element.displayName; });
-                    _this.mappings.set(element.displayName, route.component);
+                    _this.mappings.set(element.displayName, route ? route.component : undefined);
+                    element.component = route ? route.component : undefined;
                 }
                 _this.populateMappingsFromLeaves(element.children, routes);
             });
@@ -352,7 +340,7 @@
         SideNavComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'us-sidenav',
-                        template: "\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-lg-12 col-md-12 col-sm-0\">\n          <mat-sidenav-container class=\"example-sidenav-container\">\n            <mat-sidenav #snav role=\"navigation\" opened mode=\"side\" class=\"col-lg-3 col-md-3 col-sm-3\">\n              <mat-nav-list>\n                <us-sidenav-list-item *ngFor=\"let item of navItems\" [item]=\"item\"></us-sidenav-list-item>\n              </mat-nav-list>\n            </mat-sidenav>\n\n            <mat-sidenav-content role=\"main\" class=\"col-lg-9 col-md-9 col-sm-9\">\n              <ng-template form-host></ng-template>\n            </mat-sidenav-content>\n          </mat-sidenav-container>\n        </div>\n      </div>\n    </div>\n  ",
+                        template: "\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-lg-12 col-md-12 col-sm-0\">\n          <mat-sidenav-container class=\"example-sidenav-container\">\n            <mat-sidenav #snav role=\"navigation\" opened mode=\"side\" class=\"col-lg-3 col-md-3 col-sm-3\">\n              <mat-nav-list>\n                <us-sidenav-list-item *ngFor=\"let item of navItems\" [item]=\"item\"></us-sidenav-list-item>\n              </mat-nav-list>\n            </mat-sidenav>\n\n            <mat-sidenav-content role=\"main\" class=\"col-lg-9 col-md-9 col-sm-9\">\n              <ng-template usFormHost></ng-template>\n            </mat-sidenav-content>\n          </mat-sidenav-container>\n        </div>\n      </div>\n    </div>\n  ",
                         styles: ["\n    .example-sidenav-container {\n      height: 1200px;\n    }\n  "],
                         providers: [ComponentRouteService, WorkflowService]
                     },] },

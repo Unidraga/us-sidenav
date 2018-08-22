@@ -86,41 +86,24 @@ export class SideNavComponent implements OnInit, OnDestroy {
         const diagramNodes = diagramContents['bpmn:task'];
         diagramNodes.push(diagramRoot);
         this.buildNavList(diagramConnectors, diagramNodes, diagramType, diagramRoot);
-
         // this.navItems = this.extractSteps(acq['steps']);
         console.log(this.navItems);
+
+        this.populateMappingsFromLeaves(this.navItems, this.config);
+        this.mappings.forEach((value, key) => {
+          if (!value || value === '') {
+            console.error(key + ' is not bound to any component');
+          }
+        });
       },
       (error: any) => {
         console.log('Error : ' + error.message);
       }
     );
-
-    this.populateMappingsFromLeaves(this.navItems, this.config);
-    this.mappings.forEach((value, key) => {
-      if (!value || value === '') {
-        console.error(key + ' is not bound to any component');
-      }
-    });
-    // this.extractComponents(this.config.routes);
   }
 
   ngOnDestroy(): void {
   }
-
-  // private extractComponents(routes: Route[]) {
-  //   if (!routes) {
-  //     return;
-  //   }
-
-  //   routes.forEach(route => {
-  //     this.mappings.set(route.path, route.component);
-
-  //     if (route.children) {
-  //       route.children.forEach(child => this.mappings.set(route.path, route.component));
-  //       this.extractComponents(route.children);
-  //     }
-  //   });
-  // }
 
   private buildNavList(diagramConnectors: any, diagramNodes: any, diagramType: string, diagramRoot?: any) {
     switch (diagramType) {
@@ -270,7 +253,8 @@ export class SideNavComponent implements OnInit, OnDestroy {
     navList.forEach((element: any) => {
       if (!element.children || !element.children.length) {
         const route = routes.find((route: any) => route.path === element.displayName);
-        this.mappings.set(element.displayName, route.component);
+        this.mappings.set(element.displayName, route ? route.component : undefined);
+        element.component = route ? route.component : undefined;
       }
       this.populateMappingsFromLeaves(element.children, routes);
     });
