@@ -28,7 +28,7 @@ export declare class SideNavComponent implements OnInit, OnDestroy {
     private buildNavListGeneralDiagram(diagramConnectors, diagramNodes);
     private buildNavListOrgChart(diagramConnectors, diagramNodes);
     private findRecursive(navList, name);
-    private populateMappingsFromLeaves(navList);
+    private populateMappingsFromLeaves(navList, routes);
     getComponentType(typeName: string): any;
     private loadComponent(component);
 }

@@ -95,8 +95,8 @@ export class SideNavComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.populateMappingsFromLeaves(this.navItems);
-    this.mappings.forEach((key, value) => {
+    this.populateMappingsFromLeaves(this.navItems, this.config);
+    this.mappings.forEach((value, key) => {
       if (!value || value === '') {
         console.error(key + ' is not bound to any component');
       }
@@ -161,7 +161,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
       if (resultNav !== undefined) {
         console.log('found ' + sourceNodeName + ' pointing to ' + targetNodeName);
       } else {
-        console.log('not found ' + sourceNodeName + ' pointing to ' + targetNodeName);
+        console.error('not found ' + sourceNodeName + ' pointing to ' + targetNodeName);
         console.log(this.navItems);
         return;
       }
@@ -262,16 +262,17 @@ export class SideNavComponent implements OnInit, OnDestroy {
     return result;
   }
 
-  private populateMappingsFromLeaves(navList: NavItem[]) {
+  private populateMappingsFromLeaves(navList: NavItem[], routes: any) {
     if (!navList) {
       return;
     }
 
     navList.forEach((element: any) => {
-      if (!element.children) {
-        this.mappings.set(element.displayName, undefined);
+      if (!element.children || !element.children.length) {
+        const route = routes.find((route: any) => route.path === element.displayName);
+        this.mappings.set(element.displayName, route.component);
       }
-      this.populateMappingsFromLeaves(element.children);
+      this.populateMappingsFromLeaves(element.children, routes);
     });
   }
 

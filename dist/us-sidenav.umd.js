@@ -170,8 +170,8 @@
             }, function (error) {
                 console.log('Error : ' + error.message);
             });
-            this.populateMappingsFromLeaves(this.navItems);
-            this.mappings.forEach(function (key, value) {
+            this.populateMappingsFromLeaves(this.navItems, this.config);
+            this.mappings.forEach(function (value, key) {
                 if (!value || value === '') {
                     console.error(key + ' is not bound to any component');
                 }
@@ -230,7 +230,7 @@
                     console.log('found ' + sourceNodeName + ' pointing to ' + targetNodeName);
                 }
                 else {
-                    console.log('not found ' + sourceNodeName + ' pointing to ' + targetNodeName);
+                    console.error('not found ' + sourceNodeName + ' pointing to ' + targetNodeName);
                     console.log(_this.navItems);
                     return;
                 }
@@ -318,16 +318,17 @@
             });
             return result;
         };
-        SideNavComponent.prototype.populateMappingsFromLeaves = function (navList) {
+        SideNavComponent.prototype.populateMappingsFromLeaves = function (navList, routes) {
             var _this = this;
             if (!navList) {
                 return;
             }
             navList.forEach(function (element) {
-                if (!element.children) {
-                    _this.mappings.set(element.displayName, undefined);
+                if (!element.children || !element.children.length) {
+                    var route = routes.find(function (route) { return route.path === element.displayName; });
+                    _this.mappings.set(element.displayName, route.component);
                 }
-                _this.populateMappingsFromLeaves(element.children);
+                _this.populateMappingsFromLeaves(element.children, routes);
             });
         };
         SideNavComponent.prototype.getComponentType = function (typeName) {
