@@ -1,18 +1,14 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-0">
-      <mat-sidenav-container class="example-sidenav-container">
-        <mat-sidenav #snav role="navigation" opened mode="side" class="col-lg-3 col-md-3 col-sm-3">
-          <mat-nav-list>
-            <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
-          </mat-nav-list>
-        </mat-sidenav>
+<div>
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav role="navigation" opened mode="side">
+      <mat-nav-list>
+        <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
 
-        <mat-sidenav-content role="main" class="col-lg-9 col-md-9 col-sm-9">
-          <ng-template usFormHost></ng-template>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
-    </div>
-  </div>
+    <mat-sidenav-content role="main">
+      <ng-template usFormHost></ng-template>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
