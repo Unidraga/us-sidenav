@@ -18,22 +18,24 @@ export class NavItem {
     return this._children;
   }
 
-  updateIcon(nav: NavItem|undefined, allNew: boolean, allDone: boolean) {
+  updateIcon(nav: NavItem | undefined, model?: any) {
     if (!nav) {
       return;
     }
 
     if (nav.children && nav.children.length) {
       // branch - set icon according to children's icon
-      allNew = nav.children.every(element => element.iconName === 'brightness_1');
-      allDone = nav.children.every(element => element.iconName === 'done');
+      const allNew = nav.children.every((element: any) => element.iconName === 'brightness_1');
+      const allDone = nav.children.every((element: any) => element.iconName === 'done');
       nav.iconName = allNew || allDone ? nav.children[0].iconName : 'edit';
     } else {
       // leaf - set icon according to data fields
+      const allNew = model.every((element: any) => element === undefined || element === '');
+      const allDone = model.every((element: any) => element !== undefined && element !== '');
       nav.iconName = allNew ? 'brightness_1' : allDone ? 'done' : 'edit';
     }
 
-    this.updateIcon(nav.parent, allNew, allDone);
+    this.updateIcon(nav.parent);
   }
 
   constructor(name?: string) {

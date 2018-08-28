@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Subject'), require('@angular/common/http'), require('@angular/forms'), require('@angular/animations'), require('@angular/material'), require('@angular/common'), require('@angular/platform-browser/animations')) :
     typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Subject', '@angular/common/http', '@angular/forms', '@angular/animations', '@angular/material', '@angular/common', '@angular/platform-browser/animations'], factory) :
-    (factory((global.usSidenav = {}),global.ng.core,global.Rx.Subject,global.http,global.ng.forms,global.animations,global.ng.material,global.ng.common,global.animations$1));
+    (factory((global.usSidenav = {}),global.ng.core,global.Rx.Subject,global.ng.common.http,global.ng.forms,global.ng.animations,global.ng.material,global.ng.common,global.ng['platform-browser'].animations));
 }(this, (function (exports,core,Subject,http,forms,animations,material,common,animations$1) { 'use strict';
 
     var NavItem = /** @class */ (function () {
@@ -19,21 +19,23 @@
             enumerable: true,
             configurable: true
         });
-        NavItem.prototype.updateIcon = function (nav, allNew, allDone) {
+        NavItem.prototype.updateIcon = function (nav, model) {
             if (!nav) {
                 return;
             }
             if (nav.children && nav.children.length) {
                 // branch - set icon according to children's icon
-                allNew = nav.children.every(function (element) { return element.iconName === 'brightness_1'; });
-                allDone = nav.children.every(function (element) { return element.iconName === 'done'; });
+                var allNew = nav.children.every(function (element) { return element.iconName === 'brightness_1'; });
+                var allDone = nav.children.every(function (element) { return element.iconName === 'done'; });
                 nav.iconName = allNew || allDone ? nav.children[0].iconName : 'edit';
             }
             else {
                 // leaf - set icon according to data fields
+                var allNew = model.every(function (element) { return element === undefined || element === ''; });
+                var allDone = model.every(function (element) { return element !== undefined && element !== ''; });
                 nav.iconName = allNew ? 'brightness_1' : allDone ? 'done' : 'edit';
             }
-            this.updateIcon(nav.parent, allNew, allDone);
+            this.updateIcon(nav.parent);
         };
         return NavItem;
     }());
@@ -357,7 +359,7 @@
             { type: core.Component, args: [{
                         selector: 'us-sidenav',
                         template: "\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <mat-sidenav-container class=\"container-fluid sidenav-container\">\n      <mat-sidenav #snav role=\"navigation\" opened mode=\"side\">\n        <mat-nav-list>\n          <us-sidenav-list-item *ngFor=\"let item of navItems\" [item]=\"item\"></us-sidenav-list-item>\n        </mat-nav-list>\n      </mat-sidenav>\n\n      <mat-sidenav-content role=\"main\">\n        <ng-template usFormHost></ng-template>\n      </mat-sidenav-content>\n    </mat-sidenav-container>\n  ",
-                        styles: ["\n    .sidenav-container {\n      min-height: 50em;\n      max-height: 100%;\n    }\n  "],
+                        styles: ["\n    .sidenav-container {\n      min-height: 59em;\n    }\n  "],
                         providers: [ComponentRouteService, WorkflowService]
                     },] },
         ];

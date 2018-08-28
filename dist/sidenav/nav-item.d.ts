@@ -8,6 +8,6 @@ export declare class NavItem {
     component?: Type<any>;
     private _children;
     readonly children: NavItem[];
-    updateIcon(nav: NavItem | undefined, allNew: boolean, allDone: boolean): void;
+    updateIcon(nav: NavItem | undefined, model?: any): void;
     constructor(name?: string);
 }
