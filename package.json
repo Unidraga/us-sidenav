@@ -17,6 +17,8 @@
     "ngc": "ngc",
     "test": "npm run build && karma start"
   },
+  "author": "Kero Toh Boon Wee",
+  "license": "MIT",
   "private": true,
   "dependencies": {
    
