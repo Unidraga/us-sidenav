@@ -3,14 +3,14 @@
   crossorigin="anonymous">
 <div class="container-fluid">
   <div class="row">
-    <mat-sidenav-container class="container-fluid sidenav-container col-lg-12 col-md-12 col-sm-0">
-      <mat-sidenav #snav role="navigation" opened mode="side" class="col-lg-3 col-md-3 col-sm-0">
+    <mat-sidenav-container class="container-fluid sidenav-container">
+      <mat-sidenav #snav role="navigation" opened mode="side" class="col-xl-auto col-lg-auto col-md-auto col-sm-0">
         <mat-nav-list>
           <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
         </mat-nav-list>
       </mat-sidenav>
     
-      <mat-sidenav-content role="main" class="col-lg-9 col-md-9 col-sm-0">
+      <mat-sidenav-content role="main" class="col-xl-auto col-lg-auto col-md-auto col-sm-0">
         <ng-template usFormHost></ng-template>
       </mat-sidenav-content>
     </mat-sidenav-container>
