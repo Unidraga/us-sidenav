@@ -1,18 +1,21 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
   crossorigin="anonymous">
-
-<mat-sidenav-container class="container-fluid sidenav-container col-lg-12 col-md-12 col-sm-0">
-  <mat-sidenav #snav role="navigation" opened mode="side" class="col-lg-3 col-md-3 col-sm-0">
-    <mat-nav-list>
-      <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content role="main" class="col-lg-9 col-md-9 col-sm-0">
-    <ng-template usFormHost></ng-template>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="container-fluid">
+  <div class="row">
+    <mat-sidenav-container class="container-fluid sidenav-container col-lg-12 col-md-12 col-sm-0">
+      <mat-sidenav #snav role="navigation" opened mode="side" class="col-lg-3 col-md-3 col-sm-0">
+        <mat-nav-list>
+          <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
+        </mat-nav-list>
+      </mat-sidenav>
+    
+      <mat-sidenav-content role="main" class="col-lg-9 col-md-9 col-sm-0">
+        <ng-template usFormHost></ng-template>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   crossorigin="anonymous"></script>
