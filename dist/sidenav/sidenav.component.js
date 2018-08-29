@@ -231,7 +231,7 @@ var SideNavComponent = /** @class */ (function () {
     SideNavComponent.decorators = [
         { type: Component, args: [{
                     selector: 'us-sidenav',
-                    template: "\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <mat-sidenav-container class=\"container-fluid sidenav-container\">\n      <mat-sidenav #snav role=\"navigation\" opened mode=\"side\">\n        <mat-nav-list>\n          <us-sidenav-list-item *ngFor=\"let item of navItems\" [item]=\"item\"></us-sidenav-list-item>\n        </mat-nav-list>\n      </mat-sidenav>\n\n      <mat-sidenav-content role=\"main\">\n        <ng-template usFormHost></ng-template>\n      </mat-sidenav-content>\n    </mat-sidenav-container>\n  ",
+                    template: "\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <mat-sidenav-container class=\"container-fluid sidenav-container col-lg-12 col-md-12 col-sm-0\">\n      <mat-sidenav #snav role=\"navigation\" opened mode=\"side\" class=\"col-lg-3 col-md-3 col-sm-0\">\n        <mat-nav-list>\n          <us-sidenav-list-item *ngFor=\"let item of navItems\" [item]=\"item\"></us-sidenav-list-item>\n        </mat-nav-list>\n      </mat-sidenav>\n\n      <mat-sidenav-content role=\"main\" class=\"col-lg-9 col-md-9 col-sm-0\">\n        <ng-template usFormHost></ng-template>\n      </mat-sidenav-content>\n    </mat-sidenav-container>\n  ",
                     styles: ["\n    .sidenav-container {\n      min-height: 59em;\n    }\n  "],
                     providers: [ComponentRouteService, WorkflowService]
                 },] },

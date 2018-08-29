@@ -36,14 +36,14 @@ import { SideNavConfig } from './sidenav/sidenav-config';
   ]
 })
 export class SideNavModule {
-  static forRoot(routes: Route[]): ModuleWithProviders<SideNavModule> {
+  static forRoot(routes: Route[]): ModuleWithProviders {
     return {
       ngModule: SideNavModule,
       providers: [{provide: SideNavConfig, useValue: routes}]
     };
   }
 
-  static forChild(routes: Route[]): ModuleWithProviders<SideNavModule> {
+  static forChild(routes: Route[]): ModuleWithProviders {
     return {
       ngModule: SideNavModule,
       providers: [{provide: SideNavConfig, useValue: routes}]
