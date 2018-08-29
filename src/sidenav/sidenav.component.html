@@ -4,13 +4,13 @@
 <div class="container-fluid">
   <div class="row">
   <mat-sidenav-container class="sidenav-container">
-      <mat-sidenav #snav role="navigation" opened mode="side" class="col-xl-4 col-lg-4 col-md-4 col-sm-0">
+      <mat-sidenav #snav role="navigation" opened mode="side" class="col-4">
         <mat-nav-list>
           <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
         </mat-nav-list>
       </mat-sidenav>
 
-      <mat-sidenav-content role="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-0 ml-4">
+      <mat-sidenav-content role="main" class="col-6">
         <ng-template usFormHost></ng-template>
       </mat-sidenav-content>
     </mat-sidenav-container>
