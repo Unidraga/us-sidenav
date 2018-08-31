@@ -30,23 +30,20 @@ var SideNavModule = /** @class */ (function () {
                         ReactiveFormsModule,
                         MaterialModule,
                         BrowserAnimationsModule
-                        // RouterModule.forChild(rolesRoutes)
                     ],
                     providers: [],
                     declarations: [
                         SideNavComponent,
                         SideNavListItemComponent,
                         FormDirective
-                        // RolesComponent,
-                        // ListComponent,
-                        // AddEditViewComponent,
-                        // DeleteComponent
                     ],
                     exports: [
                         SideNavComponent
                     ]
                 },] },
     ];
+    /** @nocollapse */
+    SideNavModule.ctorParameters = function () { return []; };
     return SideNavModule;
 }());
 export { SideNavModule };

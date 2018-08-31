@@ -10,6 +10,7 @@ export default {
       '@angular/common': 'ng.common',
       '@angular/common/http': 'ng.common.http',
       '@angular/core': 'ng.core',
+      '@angular/router': 'ng.router',
       '@angular/forms': 'ng.forms',
       '@angular/material': 'ng.material',
       '@angular/animations': 'ng.animations',

@@ -9,6 +9,8 @@ var MaterialModule = /** @class */ (function () {
                     exports: [MatSidenavModule, MatListModule, MatIconModule],
                 },] },
     ];
+    /** @nocollapse */
+    MaterialModule.ctorParameters = function () { return []; };
     return MaterialModule;
 }());
 export { MaterialModule };

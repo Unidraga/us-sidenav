@@ -226,6 +226,7 @@ var SideNavComponent = /** @class */ (function () {
         viewContainerRef.clear();
         var componentRef = viewContainerRef.createComponent(componentFactory);
         // (<FormComponent>componentRef.instance).data = this.acquisition;
+        // (<FormComponent>componentRef.instance).data = this.acquisition;
         componentRef.instance.navItem = this.selectedNav;
     };
     SideNavComponent.decorators = [
@@ -238,17 +239,17 @@ var SideNavComponent = /** @class */ (function () {
     ];
     /** @nocollapse */
     SideNavComponent.ctorParameters = function () { return [
-        { type: FormBuilder },
-        { type: ChangeDetectorRef },
-        { type: ComponentFactoryResolver },
-        { type: SideNavConfig },
-        { type: WorkflowService },
-        { type: ComponentRouteService }
+        { type: FormBuilder, },
+        { type: ChangeDetectorRef, },
+        { type: ComponentFactoryResolver, },
+        { type: SideNavConfig, },
+        { type: WorkflowService, },
+        { type: ComponentRouteService, },
     ]; };
     SideNavComponent.propDecorators = {
-        formHost: [{ type: ViewChild, args: [FormDirective,] }],
-        name: [{ type: Input }],
-        item: [{ type: Input }]
+        "formHost": [{ type: ViewChild, args: [FormDirective,] },],
+        "name": [{ type: Input },],
+        "item": [{ type: Input },],
     };
     return SideNavComponent;
 }());

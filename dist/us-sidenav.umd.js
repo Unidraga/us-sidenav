@@ -51,7 +51,7 @@
         ];
         /** @nocollapse */
         FormDirective.ctorParameters = function () { return [
-            { type: core.ViewContainerRef }
+            { type: core.ViewContainerRef, },
         ]; };
         return FormDirective;
     }());
@@ -66,7 +66,10 @@
             this.navObservable$ = this.navSource.asObservable();
         }
         // Service message commands
-        ComponentRouteService.prototype.updateComponent = function (component) {
+        // Service message commands
+        ComponentRouteService.prototype.updateComponent = 
+        // Service message commands
+        function (component) {
             this.componentSource.next(component);
         };
         ComponentRouteService.prototype.updateNavItem = function (item) {
@@ -79,6 +82,8 @@
         ComponentRouteService.decorators = [
             { type: core.Injectable },
         ];
+        /** @nocollapse */
+        ComponentRouteService.ctorParameters = function () { return []; };
         return ComponentRouteService;
     }());
 
@@ -117,9 +122,18 @@
         WorkflowService.decorators = [
             { type: core.Injectable },
         ];
+        // loadDiagram(email) {
+        //   const body = JSON.stringify({ email });
+        //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        //   return this.http.post(this.URL_LOAD_DIAGRAM, body, { headers: headers });
+        // }
+        // saveDiagram(workflow: Workflow) {
+        //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        //   return this.http.post(this.URL_SAVE_DIAGRAM, workflow, { headers: headers });
+        // }
         /** @nocollapse */
         WorkflowService.ctorParameters = function () { return [
-            { type: http.HttpClient }
+            { type: http.HttpClient, },
         ]; };
         return WorkflowService;
     }());
@@ -353,6 +367,7 @@
             viewContainerRef.clear();
             var componentRef = viewContainerRef.createComponent(componentFactory);
             // (<FormComponent>componentRef.instance).data = this.acquisition;
+            // (<FormComponent>componentRef.instance).data = this.acquisition;
             componentRef.instance.navItem = this.selectedNav;
         };
         SideNavComponent.decorators = [
@@ -365,17 +380,17 @@
         ];
         /** @nocollapse */
         SideNavComponent.ctorParameters = function () { return [
-            { type: forms.FormBuilder },
-            { type: core.ChangeDetectorRef },
-            { type: core.ComponentFactoryResolver },
-            { type: SideNavConfig },
-            { type: WorkflowService },
-            { type: ComponentRouteService }
+            { type: forms.FormBuilder, },
+            { type: core.ChangeDetectorRef, },
+            { type: core.ComponentFactoryResolver, },
+            { type: SideNavConfig, },
+            { type: WorkflowService, },
+            { type: ComponentRouteService, },
         ]; };
         SideNavComponent.propDecorators = {
-            formHost: [{ type: core.ViewChild, args: [FormDirective,] }],
-            name: [{ type: core.Input }],
-            item: [{ type: core.Input }]
+            "formHost": [{ type: core.ViewChild, args: [FormDirective,] },],
+            "name": [{ type: core.Input },],
+            "item": [{ type: core.Input },],
         };
         return SideNavComponent;
     }());
@@ -408,8 +423,8 @@
         SideNavListItemComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'us-sidenav-list-item',
-                        template: "\n    <mat-list-item [ngStyle]=\"{'padding-left': (depth * 1.5) + 'em'}\" (click)=\"onItemSelected(item)\"\n                  [ngClass]=\"{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}\">\n      <mat-icon class=\"routeIcon\"><small>{{item.iconName}}</small></mat-icon>\n      {{item.displayName}}\n      <span fxFlex *ngIf=\"item.children && item.children.length\">\n        <span fxFlex></span>\n        <mat-icon [@indicatorRotate]=\"expanded\"> \n          <!-- \"expanded ? 'expanded': 'collapsed'\"> -->\n          expand_more\n        </mat-icon>\n      </span>\n    </mat-list-item>\n    <div *ngIf=\"expanded\">\n      <us-sidenav-list-item *ngFor=\"let child of item.children\" [item]=\"child\" [depth]=\"depth+1\">\n      </us-sidenav-list-item>\n    </div>\n  ",
-                        styles: ["\n    :host {\n      display: block;\n      outline: none;\n    }\n    .mat-list-item {\n      padding: 8px 0;\n    }\n    .mat-list-item .routeIcon {\n      margin-right: 40px;\n    }\n  "],
+                        template: "\n    <mat-list-item [ngStyle]=\"{'padding-left': (depth * 1.5) + 'em'}\" (click)=\"onItemSelected(item)\"\n                  [ngClass]=\"{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}\">\n      <mat-icon class=\"routeIcon\"><small>{{item.iconName}}</small></mat-icon>\n      {{item.displayName}}\n      <span fxFlex *ngIf=\"item.children && item.children.length\">\n        <span fxFlex></span>\n        <mat-icon [@indicatorRotate]=true> \n          <!-- \"expanded ? 'expanded': 'collapsed'\"> -->\n          expand_more\n        </mat-icon>\n      </span>\n    </mat-list-item>\n    <div *ngIf=\"expanded\">\n      <us-sidenav-list-item *ngFor=\"let child of item.children\" [item]=\"child\" [depth]=\"depth+1\">\n      </us-sidenav-list-item>\n    </div>\n  ",
+                        styles: ["\n    :host {\n      display: block;\n      outline: none;\n    }\n    :host .mat-list-item.active {\n      background-color: cornflowerblue;\n    }\n    :host:hover > .mat-list-item:not(.expanded),\n    :host:focus > .mat-list-item:not(.expanded) {\n      background-color: blue;\n    }\n    .mat-list-item {\n      padding: 8px 0;\n    }\n    .mat-list-item .routeIcon {\n      margin-right: 40px;\n    }\n  "],
                         animations: [
                             animations.trigger('indicatorRotate', [
                                 animations.state('collapsed', animations.style({ transform: 'rotate(0deg)' })),
@@ -421,12 +436,12 @@
         ];
         /** @nocollapse */
         SideNavListItemComponent.ctorParameters = function () { return [
-            { type: ComponentRouteService }
+            { type: ComponentRouteService, },
         ]; };
         SideNavListItemComponent.propDecorators = {
-            ariaExpanded: [{ type: core.HostBinding, args: ['attr.aria-expanded',] }],
-            item: [{ type: core.Input }],
-            depth: [{ type: core.Input }]
+            "ariaExpanded": [{ type: core.HostBinding, args: ['attr.aria-expanded',] },],
+            "item": [{ type: core.Input },],
+            "depth": [{ type: core.Input },],
         };
         return SideNavListItemComponent;
     }());
@@ -440,6 +455,8 @@
                         exports: [material.MatSidenavModule, material.MatListModule, material.MatIconModule],
                     },] },
         ];
+        /** @nocollapse */
+        MaterialModule.ctorParameters = function () { return []; };
         return MaterialModule;
     }());
 
@@ -466,23 +483,20 @@
                             forms.ReactiveFormsModule,
                             MaterialModule,
                             animations$1.BrowserAnimationsModule
-                            // RouterModule.forChild(rolesRoutes)
                         ],
                         providers: [],
                         declarations: [
                             SideNavComponent,
                             SideNavListItemComponent,
                             FormDirective
-                            // RolesComponent,
-                            // ListComponent,
-                            // AddEditViewComponent,
-                            // DeleteComponent
                         ],
                         exports: [
                             SideNavComponent
                         ]
                     },] },
         ];
+        /** @nocollapse */
+        SideNavModule.ctorParameters = function () { return []; };
         return SideNavModule;
     }());
 

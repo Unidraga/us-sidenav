@@ -1,6 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { NavItem } from '../nav-item';
-// import {NavService} from '../nav.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ComponentRouteService } from '../../shared/route.service';
 var SideNavListItemComponent = /** @class */ (function () {
@@ -31,8 +30,8 @@ var SideNavListItemComponent = /** @class */ (function () {
     SideNavListItemComponent.decorators = [
         { type: Component, args: [{
                     selector: 'us-sidenav-list-item',
-                    template: "\n    <mat-list-item [ngStyle]=\"{'padding-left': (depth * 1.5) + 'em'}\" (click)=\"onItemSelected(item)\"\n                  [ngClass]=\"{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}\">\n      <mat-icon class=\"routeIcon\"><small>{{item.iconName}}</small></mat-icon>\n      {{item.displayName}}\n      <span fxFlex *ngIf=\"item.children && item.children.length\">\n        <span fxFlex></span>\n        <mat-icon [@indicatorRotate]=\"expanded\"> \n          <!-- \"expanded ? 'expanded': 'collapsed'\"> -->\n          expand_more\n        </mat-icon>\n      </span>\n    </mat-list-item>\n    <div *ngIf=\"expanded\">\n      <us-sidenav-list-item *ngFor=\"let child of item.children\" [item]=\"child\" [depth]=\"depth+1\">\n      </us-sidenav-list-item>\n    </div>\n  ",
-                    styles: ["\n    :host {\n      display: block;\n      outline: none;\n    }\n    .mat-list-item {\n      padding: 8px 0;\n    }\n    .mat-list-item .routeIcon {\n      margin-right: 40px;\n    }\n  "],
+                    template: "\n    <mat-list-item [ngStyle]=\"{'padding-left': (depth * 1.5) + 'em'}\" (click)=\"onItemSelected(item)\"\n                  [ngClass]=\"{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}\">\n      <mat-icon class=\"routeIcon\"><small>{{item.iconName}}</small></mat-icon>\n      {{item.displayName}}\n      <span fxFlex *ngIf=\"item.children && item.children.length\">\n        <span fxFlex></span>\n        <mat-icon [@indicatorRotate]=true> \n          <!-- \"expanded ? 'expanded': 'collapsed'\"> -->\n          expand_more\n        </mat-icon>\n      </span>\n    </mat-list-item>\n    <div *ngIf=\"expanded\">\n      <us-sidenav-list-item *ngFor=\"let child of item.children\" [item]=\"child\" [depth]=\"depth+1\">\n      </us-sidenav-list-item>\n    </div>\n  ",
+                    styles: ["\n    :host {\n      display: block;\n      outline: none;\n    }\n    :host .mat-list-item.active {\n      background-color: cornflowerblue;\n    }\n    :host:hover > .mat-list-item:not(.expanded),\n    :host:focus > .mat-list-item:not(.expanded) {\n      background-color: blue;\n    }\n    .mat-list-item {\n      padding: 8px 0;\n    }\n    .mat-list-item .routeIcon {\n      margin-right: 40px;\n    }\n  "],
                     animations: [
                         trigger('indicatorRotate', [
                             state('collapsed', style({ transform: 'rotate(0deg)' })),
@@ -44,12 +43,12 @@ var SideNavListItemComponent = /** @class */ (function () {
     ];
     /** @nocollapse */
     SideNavListItemComponent.ctorParameters = function () { return [
-        { type: ComponentRouteService }
+        { type: ComponentRouteService, },
     ]; };
     SideNavListItemComponent.propDecorators = {
-        ariaExpanded: [{ type: HostBinding, args: ['attr.aria-expanded',] }],
-        item: [{ type: Input }],
-        depth: [{ type: Input }]
+        "ariaExpanded": [{ type: HostBinding, args: ['attr.aria-expanded',] },],
+        "item": [{ type: Input },],
+        "depth": [{ type: Input },],
     };
     return SideNavListItemComponent;
 }());

@@ -10,7 +10,7 @@ var FormDirective = /** @class */ (function () {
     ];
     /** @nocollapse */
     FormDirective.ctorParameters = function () { return [
-        { type: ViewContainerRef }
+        { type: ViewContainerRef, },
     ]; };
     return FormDirective;
 }());

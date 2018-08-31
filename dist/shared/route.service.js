@@ -10,7 +10,10 @@ var ComponentRouteService = /** @class */ (function () {
         this.navObservable$ = this.navSource.asObservable();
     }
     // Service message commands
-    ComponentRouteService.prototype.updateComponent = function (component) {
+    // Service message commands
+    ComponentRouteService.prototype.updateComponent = 
+    // Service message commands
+    function (component) {
         this.componentSource.next(component);
     };
     ComponentRouteService.prototype.updateNavItem = function (item) {
@@ -23,6 +26,8 @@ var ComponentRouteService = /** @class */ (function () {
     ComponentRouteService.decorators = [
         { type: Injectable },
     ];
+    /** @nocollapse */
+    ComponentRouteService.ctorParameters = function () { return []; };
     return ComponentRouteService;
 }());
 export { ComponentRouteService };
