@@ -1,10 +1,10 @@
 <mat-list-item [ngStyle]="{'padding-left': (depth * 1.5) + 'em'}" (click)="onItemSelected(item)"
-              [ngClass]="{'active': item.isSelected(), 'expanded': expanded}">
+              [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}">
   <mat-icon class="routeIcon"><small>{{item.iconName}}</small></mat-icon>
   {{item.displayName}}
   <span fxFlex *ngIf="item.children && item.children.length">
     <span fxFlex></span>
-    <mat-icon [@indicatorRotate]=true> 
+    <mat-icon [@indicatorRotate]="expanded"> 
       <!-- "expanded ? 'expanded': 'collapsed'"> -->
       expand_more
     </mat-icon>

@@ -19,12 +19,12 @@ import { ComponentRouteService } from '../../shared/route.service';
   ]
 })
 export class SideNavListItemComponent implements OnInit {
-  expanded: boolean;
+  expanded = true;
   @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
   @Input() item: NavItem;
   @Input() depth: number;
   // subscription: Subscription;
-  selectedNav: NavItem;
+  // selectedNav: NavItem;
 
   constructor(
     private componentRouteService: ComponentRouteService) {
@@ -35,15 +35,15 @@ export class SideNavListItemComponent implements OnInit {
       this.depth = 0;
     }
 
-    this.componentRouteService.navObservable$.subscribe(
-      (nav: any) => {
-        this.selectedNav = nav;
-      });
+    // this.componentRouteService.navObservable$.subscribe(
+    //   (nav: any) => {
+    //     this.selectedNav = nav;
+    //   });
   }
 
-  isSelected(): boolean {
-    return this.item === this.selectedNav;
-  }
+  // isSelected(): boolean {
+  //   return this.item === this.selectedNav;
+  // }
 
   onItemSelected(item: NavItem) {
     console.log(item);

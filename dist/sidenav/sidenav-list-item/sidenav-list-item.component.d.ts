@@ -7,9 +7,7 @@ export declare class SideNavListItemComponent implements OnInit {
     ariaExpanded: boolean;
     item: NavItem;
     depth: number;
-    selectedNav: NavItem;
     constructor(componentRouteService: ComponentRouteService);
     ngOnInit(): void;
-    isSelected(): boolean;
     onItemSelected(item: NavItem): void;
 }

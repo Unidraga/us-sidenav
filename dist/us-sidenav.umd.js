@@ -396,23 +396,33 @@
     }());
 
     var SideNavListItemComponent = /** @class */ (function () {
+        // subscription: Subscription;
+        // selectedNav: NavItem;
         function SideNavListItemComponent(componentRouteService) {
             this.componentRouteService = componentRouteService;
+            this.expanded = true;
             this.ariaExpanded = this.expanded;
         }
         SideNavListItemComponent.prototype.ngOnInit = function () {
-            var _this = this;
             if (this.depth === undefined) {
                 this.depth = 0;
             }
-            this.componentRouteService.navObservable$.subscribe(function (nav) {
-                _this.selectedNav = nav;
-            });
+            // this.componentRouteService.navObservable$.subscribe(
+            //   (nav: any) => {
+            //     this.selectedNav = nav;
+            //   });
         };
-        SideNavListItemComponent.prototype.isSelected = function () {
-            return this.item === this.selectedNav;
-        };
-        SideNavListItemComponent.prototype.onItemSelected = function (item) {
+        // isSelected(): boolean {
+        //   return this.item === this.selectedNav;
+        // }
+        // isSelected(): boolean {
+        //   return this.item === this.selectedNav;
+        // }
+        SideNavListItemComponent.prototype.onItemSelected = 
+        // isSelected(): boolean {
+        //   return this.item === this.selectedNav;
+        // }
+        function (item) {
             console.log(item);
             if (!item.children || !item.children.length) {
                 console.log(item.component);
@@ -429,7 +439,7 @@
         SideNavListItemComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'us-sidenav-list-item',
-                        template: "\n    <mat-list-item [ngStyle]=\"{'padding-left': (depth * 1.5) + 'em'}\" (click)=\"onItemSelected(item)\"\n                  [ngClass]=\"{'active': item.isSelected(), 'expanded': expanded}\">\n      <mat-icon class=\"routeIcon\"><small>{{item.iconName}}</small></mat-icon>\n      {{item.displayName}}\n      <span fxFlex *ngIf=\"item.children && item.children.length\">\n        <span fxFlex></span>\n        <mat-icon [@indicatorRotate]=true> \n          <!-- \"expanded ? 'expanded': 'collapsed'\"> -->\n          expand_more\n        </mat-icon>\n      </span>\n    </mat-list-item>\n    <div *ngIf=\"expanded\">\n      <us-sidenav-list-item *ngFor=\"let child of item.children\" [item]=\"child\" [depth]=\"depth+1\">\n      </us-sidenav-list-item>\n    </div>\n  ",
+                        template: "\n    <mat-list-item [ngStyle]=\"{'padding-left': (depth * 1.5) + 'em'}\" (click)=\"onItemSelected(item)\"\n                  [ngClass]=\"{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}\">\n      <mat-icon class=\"routeIcon\"><small>{{item.iconName}}</small></mat-icon>\n      {{item.displayName}}\n      <span fxFlex *ngIf=\"item.children && item.children.length\">\n        <span fxFlex></span>\n        <mat-icon [@indicatorRotate]=\"expanded\"> \n          <!-- \"expanded ? 'expanded': 'collapsed'\"> -->\n          expand_more\n        </mat-icon>\n      </span>\n    </mat-list-item>\n    <div *ngIf=\"expanded\">\n      <us-sidenav-list-item *ngFor=\"let child of item.children\" [item]=\"child\" [depth]=\"depth+1\">\n      </us-sidenav-list-item>\n    </div>\n  ",
                         styles: ["\n    :host {\n      display: block;\n      outline: none;\n    }\n    :host .mat-list-item.active {\n      background-color: cornflowerblue;\n    }\n    :host:hover > .mat-list-item:not(.expanded),\n    :host:focus > .mat-list-item:not(.expanded) {\n      background-color: cornflowerblue;\n    }\n    .mat-list-item {\n      padding: 8px 0;\n    }\n    .mat-list-item .routeIcon {\n      margin-right: 40px;\n    }\n  "],
                         animations: [
                             animations.trigger('indicatorRotate', [
