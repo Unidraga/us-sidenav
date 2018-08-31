@@ -1,15 +1,15 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
   crossorigin="anonymous">
-<div class="container-fluid">
-  <mat-sidenav-container class="sidenav-container row">
-    <mat-sidenav #snav role="navigation" opened mode="side" class="col-4">
+<div>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #snav role="navigation" opened mode="side">
       <mat-nav-list>
         <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content role="main" class="col-8">
+    <mat-sidenav-content role="main">
       <ng-template usFormHost></ng-template>
     </mat-sidenav-content>
   </mat-sidenav-container>
