@@ -24,6 +24,7 @@ export class SideNavListItemComponent implements OnInit {
   @Input() item: NavItem;
   @Input() depth: number;
   // subscription: Subscription;
+  selectedNav: NavItem;
 
   constructor(
     private componentRouteService: ComponentRouteService) {
@@ -33,6 +34,15 @@ export class SideNavListItemComponent implements OnInit {
     if (this.depth === undefined) {
       this.depth = 0;
     }
+
+    this.componentRouteService.navObservable$.subscribe(
+      (nav: any) => {
+        this.selectedNav = nav;
+      });
+  }
+
+  isSelected(): boolean {
+    return this.item === this.selectedNav;
   }
 
   onItemSelected(item: NavItem) {
