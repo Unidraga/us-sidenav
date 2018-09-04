@@ -5,18 +5,18 @@
   <mat-sidenav-container class="mat-sidenav-container">
     <mat-sidenav #snav role="navigation" opened mode="side" class="sidenav-container">
       <div class="sidenav-header">
-          <span fxFlex class="back" [routerLink]="backUrl">
+          <span class="back" [routerLink]="backUrl">
             <mat-icon>chevron_left</mat-icon>&nbsp; MY ACQUISITIONS
           </span>
       </div>
       <div class="sidenav-main">
-        <mat-nav-list fxFlex>
+        <mat-nav-list>
           <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
         </mat-nav-list>
       </div>
     </mat-sidenav>
 
-    <mat-sidenav-content role="main">
+    <mat-sidenav-content role="main" class="sidenav-content">
       <ng-template usFormHost></ng-template>
     </mat-sidenav-content>
   </mat-sidenav-container>
