@@ -9,6 +9,9 @@ import { MaterialModule } from './material.module';
 import { FormDirective } from './shared/form.directive';
 import { SideNavConfig } from './sidenav/sidenav-config';
 
+const routes = [
+  { path: '', SideNavComponent}
+];
 
 @NgModule({
   imports: [
@@ -17,7 +20,7 @@ import { SideNavConfig } from './sidenav/sidenav-config';
     ReactiveFormsModule,
     MaterialModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule.forRoot(routes)
   ],
   providers: [
     // RolesDataResolverService,

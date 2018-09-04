@@ -476,6 +476,9 @@
         return MaterialModule;
     }());
 
+    var routes = [
+        { path: '', SideNavComponent: SideNavComponent }
+    ];
     var SideNavModule = /** @class */ (function () {
         function SideNavModule() {
         }
@@ -499,7 +502,7 @@
                             forms.ReactiveFormsModule,
                             MaterialModule,
                             animations$1.BrowserAnimationsModule,
-                            router.RouterModule
+                            router.RouterModule.forRoot(routes)
                         ],
                         providers: [],
                         declarations: [

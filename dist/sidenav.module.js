@@ -8,6 +8,9 @@ import { SideNavListItemComponent } from './sidenav/sidenav-list-item/sidenav-li
 import { MaterialModule } from './material.module';
 import { FormDirective } from './shared/form.directive';
 import { SideNavConfig } from './sidenav/sidenav-config';
+var routes = [
+    { path: '', SideNavComponent: SideNavComponent }
+];
 var SideNavModule = /** @class */ (function () {
     function SideNavModule() {
     }
@@ -31,7 +34,7 @@ var SideNavModule = /** @class */ (function () {
                         ReactiveFormsModule,
                         MaterialModule,
                         BrowserAnimationsModule,
-                        RouterModule
+                        RouterModule.forRoot(routes)
                     ],
                     providers: [],
                     declarations: [
