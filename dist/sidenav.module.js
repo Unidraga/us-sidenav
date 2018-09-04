@@ -9,7 +9,7 @@ import { MaterialModule } from './material.module';
 import { FormDirective } from './shared/form.directive';
 import { SideNavConfig } from './sidenav/sidenav-config';
 var routes = [
-    { path: '', SideNavComponent: SideNavComponent }
+    { path: '', component: SideNavComponent }
 ];
 var SideNavModule = /** @class */ (function () {
     function SideNavModule() {

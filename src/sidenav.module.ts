@@ -10,7 +10,7 @@ import { FormDirective } from './shared/form.directive';
 import { SideNavConfig } from './sidenav/sidenav-config';
 
 const routes = [
-  { path: '', SideNavComponent}
+  { path: '', component: SideNavComponent}
 ];
 
 @NgModule({
