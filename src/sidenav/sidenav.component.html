@@ -5,9 +5,9 @@
   <mat-sidenav-container class="mat-sidenav-container">
     <mat-sidenav #snav role="navigation" opened mode="side" class="sidenav-container">
       <div class="sidenav-header">
-          <span class="back" [routerLink]="backUrl">
-            <mat-icon>chevron_left</mat-icon>&nbsp; MY ACQUISITIONS
-          </span>
+        <span class="back" [routerLink]="backUrl">
+          <mat-icon>chevron_left</mat-icon>&nbsp; MY ACQUISITIONS
+        </span>
       </div>
       <div class="sidenav-main">
         <mat-nav-list>
@@ -15,10 +15,11 @@
         </mat-nav-list>
       </div>
     </mat-sidenav>
-
-    <mat-sidenav-content role="main" class="sidenav-content">
-      <ng-template usFormHost></ng-template>
-    </mat-sidenav-content>
+    <div class="sidenav-content">
+      <mat-sidenav-content role="main">
+        <ng-template usFormHost></ng-template>
+      </mat-sidenav-content>
+    </div>
   </mat-sidenav-container>
 </div>
 
