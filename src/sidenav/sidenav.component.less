@@ -1,6 +1,6 @@
 .mat-sidenav-container {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     min-height: 1800px;
 }
 
@@ -10,17 +10,25 @@
     // background-color: #210f72
 }
 
+mat-sidenav {
+    flex: 1;
+}
+
+mat-sidenav-content {
+    flex: 2;
+}
+
 .sidenav-header {
     // display: flex;
     // align-items: center;
     // justify-content: left;
-    // padding-left: 2em;
-    // letter-spacing: 1px;
-    // width: auto;
-    // height: 5rem;
-    // span {
-    //   color: #210f72;
-    // }
+    padding-left: 2em;
+    letter-spacing: 1px;
+    width: auto;
+    height: 5rem;
+    span {
+      color: #210f72;
+    }
   }
 
   .sidenav-main {
