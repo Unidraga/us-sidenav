@@ -5,12 +5,12 @@
   <mat-sidenav-container class="mat-sidenav-container">
     <mat-sidenav #snav role="navigation" opened mode="side" class="sidenav-container">
       <div class="sidenav-header">
-          <span class="back" [routerLink]="backUrl">
-            <i class="fa fa-angle-left fa-lg"></i>&nbsp; MY ACQUISITIONS
+          <span fxFlex class="back" [routerLink]="backUrl">
+            <mat-icon>chevron_left</mat-icon>&nbsp; MY ACQUISITIONS
           </span>
       </div>
       <div class="sidenav-main">
-        <mat-nav-list>
+        <mat-nav-list fxFlex>
           <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
         </mat-nav-list>
       </div>
