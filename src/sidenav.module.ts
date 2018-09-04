@@ -9,14 +9,15 @@ import { MaterialModule } from './material.module';
 import { FormDirective } from './shared/form.directive';
 import { SideNavConfig } from './sidenav/sidenav-config';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    BrowserAnimationsModule
-    // RouterModule.forChild(rolesRoutes)
+    BrowserAnimationsModule,
+    RouterModule
   ],
   providers: [
     // RolesDataResolverService,

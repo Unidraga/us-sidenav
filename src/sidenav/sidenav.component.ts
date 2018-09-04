@@ -7,7 +7,7 @@ import { ComponentRouteService } from '../shared/route.service';
 import { WorkflowService } from '../shared/workflow.service';
 import { SideNavConfig } from './sidenav-config';
 import { SideNavModule } from '../sidenav.module';
-import { Route } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'us-sidenav',
@@ -19,6 +19,8 @@ export class SideNavComponent implements OnInit, OnDestroy {
   // @Input() forms: FormItem[];
   @ViewChild(FormDirective) formHost: FormDirective;
   @Input() name: string = '';
+
+  public backUrl: '';
 
   message: string;
   private mappings = new Map<string, any>();

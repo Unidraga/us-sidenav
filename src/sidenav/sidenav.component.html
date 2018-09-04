@@ -4,9 +4,15 @@
 <div>
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #snav role="navigation" opened mode="side">
-      <mat-nav-list>
-        <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
-      </mat-nav-list>
+      <div class="sidenav-header">
+          <span class="back" [routerLink]="backUrl">
+            <i class="fa fa-angle-left fa-lg"></i>&nbsp; MY ACQUISITIONS</span>
+      </div>
+      <div class="sidenav-main">
+        <mat-nav-list>
+          <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
+        </mat-nav-list>
+      </div>
     </mat-sidenav>
 
     <mat-sidenav-content role="main">

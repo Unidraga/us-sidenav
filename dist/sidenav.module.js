@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { SideNavComponent } from './sidenav/sidenav.component';
 import { SideNavListItemComponent } from './sidenav/sidenav-list-item/sidenav-list-item.component';
 import { MaterialModule } from './material.module';
@@ -29,7 +30,8 @@ var SideNavModule = /** @class */ (function () {
                         FormsModule,
                         ReactiveFormsModule,
                         MaterialModule,
-                        BrowserAnimationsModule
+                        BrowserAnimationsModule,
+                        RouterModule
                     ],
                     providers: [],
                     declarations: [

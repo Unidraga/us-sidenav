@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Subject'), require('@angular/common/http'), require('@angular/forms'), require('@angular/animations'), require('@angular/material'), require('@angular/common'), require('@angular/platform-browser/animations')) :
-    typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Subject', '@angular/common/http', '@angular/forms', '@angular/animations', '@angular/material', '@angular/common', '@angular/platform-browser/animations'], factory) :
-    (factory((global.usSidenav = {}),global.ng.core,global.Rx.Subject,global.ng.common.http,global.ng.forms,global.ng.animations,global.ng.material,global.ng.common,global.ng['platform-browser'].animations));
-}(this, (function (exports,core,Subject,http,forms,animations,material,common,animations$1) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Subject'), require('@angular/common/http'), require('@angular/forms'), require('@angular/animations'), require('@angular/material'), require('@angular/common'), require('@angular/platform-browser/animations'), require('@angular/router')) :
+    typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Subject', '@angular/common/http', '@angular/forms', '@angular/animations', '@angular/material', '@angular/common', '@angular/platform-browser/animations', '@angular/router'], factory) :
+    (factory((global.usSidenav = {}),global.ng.core,global.Rx.Subject,global.ng.common.http,global.ng.forms,global.ng.animations,global.ng.material,global.ng.common,global.ng['platform-browser'].animations,global.ng.router));
+}(this, (function (exports,core,Subject,http,forms,animations,material,common,animations$1,router) { 'use strict';
 
     var NavItem = /** @class */ (function () {
         function NavItem(name) {
@@ -373,8 +373,8 @@
         SideNavComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'us-sidenav',
-                        template: "\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\"\n      crossorigin=\"anonymous\">\n    <div>\n      <mat-sidenav-container class=\"sidenav-container\">\n        <mat-sidenav #snav role=\"navigation\" opened mode=\"side\">\n          <mat-nav-list>\n            <us-sidenav-list-item *ngFor=\"let item of navItems\" [item]=\"item\"></us-sidenav-list-item>\n          </mat-nav-list>\n        </mat-sidenav>\n\n        <mat-sidenav-content role=\"main\">\n          <ng-template usFormHost></ng-template>\n        </mat-sidenav-content>\n      </mat-sidenav-container>\n    </div>\n\n    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\"\n      crossorigin=\"anonymous\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\" integrity=\"sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49\"\n      crossorigin=\"anonymous\"></script>\n    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\"\n      crossorigin=\"anonymous\"></script>\n  ",
-                        styles: ["\n    .sidenav-container {\n      min-height: 1800px;\n    }\n  "],
+                        template: "\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\"\n      crossorigin=\"anonymous\">\n    <div>\n      <mat-sidenav-container class=\"sidenav-container\">\n        <mat-sidenav #snav role=\"navigation\" opened mode=\"side\">\n          <div class=\"sidenav-header\">\n              <span class=\"back\" [routerLink]=\"backUrl\">\n                <i class=\"fa fa-angle-left fa-lg\"></i>&nbsp; MY ACQUISITIONS</span>\n          </div>\n          <div class=\"sidenav-main\">\n            <mat-nav-list>\n              <us-sidenav-list-item *ngFor=\"let item of navItems\" [item]=\"item\"></us-sidenav-list-item>\n            </mat-nav-list>\n          </div>\n        </mat-sidenav>\n\n        <mat-sidenav-content role=\"main\">\n          <ng-template usFormHost></ng-template>\n        </mat-sidenav-content>\n      </mat-sidenav-container>\n    </div>\n\n    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\"\n      crossorigin=\"anonymous\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\" integrity=\"sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49\"\n      crossorigin=\"anonymous\"></script>\n    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\"\n      crossorigin=\"anonymous\"></script>\n  ",
+                        styles: ["\n    .sidenav-container {\n      min-height: 1800px;\n    }\n    .sidenav-header {\n      display: flex;\n      align-items: center;\n      justify-content: left;\n      padding-left: 2em;\n      letter-spacing: 1px;\n      width: auto;\n      height: 5rem;\n    }\n    .sidenav-header span {\n      color: #ffffff;\n    }\n  "],
                         providers: [ComponentRouteService, WorkflowService]
                     },] },
         ];
@@ -498,7 +498,8 @@
                             forms.FormsModule,
                             forms.ReactiveFormsModule,
                             MaterialModule,
-                            animations$1.BrowserAnimationsModule
+                            animations$1.BrowserAnimationsModule,
+                            router.RouterModule
                         ],
                         providers: [],
                         declarations: [
