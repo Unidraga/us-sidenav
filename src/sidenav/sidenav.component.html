@@ -4,20 +4,20 @@
 <div>
   <mat-sidenav-container class="mat-sidenav-container">
     <mat-sidenav #snav role="navigation" opened mode="side" class="sidenav-container">
+      <div class="sidenav-header">
+        <span fxFlex class="back" [routerLink]="backUrl">
+          <span fxFlex></span>
+          <mat-icon>chevron_left</mat-icon>&nbsp; MY ACQUISITIONS
+        </span>
+      </div>
       <div class="sidenav-main">
         <mat-nav-list>
           <us-sidenav-list-item *ngFor="let item of navItems" [item]="item"></us-sidenav-list-item>
         </mat-nav-list>
       </div>
-      <div class="sidenav-header">
-        <span  class="back" [routerLink]="backUrl">
-          <span ></span>
-          <mat-icon><small>chevron_left</small></mat-icon>&nbsp; MY ACQUISITIONS
-        </span>
-      </div>
     </mat-sidenav>
     <mat-sidenav-content role="main" class="sidenav-content">
-      <ng-template usFormHost></ng-template>
+      <ng-container usFormHost></ng-container>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
